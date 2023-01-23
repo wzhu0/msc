@@ -1,5 +1,8 @@
 .DS_Store
 history.txt
+logs/
+test/
+used/
 *.log
 *.tar.gz
 *.swp

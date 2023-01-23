@@ -1,0 +1,45 @@
+[1] "joint_msc_18_run_1.trees"
+[1] "Reading trees..."
+[1] "10 generations per tree..."
+[1] "Unrooting, this may take a while..."
+[1] "Reading parameter values from joint_msc_18_run_1.log"
+[1] "rerooting trees..."
+[1] "Outgroup t_1"
+[1] "joint_msc_18_run_2.trees"
+[1] "Reading trees..."
+[1] "10 generations per tree..."
+[1] "Unrooting, this may take a while..."
+[1] "Reading parameter values from joint_msc_18_run_2.log"
+[1] "rerooting trees..."
+[1] "Outgroup t_1"
+[1] "Calculating burn-in"
+[1] "Analyzing tree parameters"
+[1] "Analyzing continuous parameters"
+ FAILED CONVERGENCE 
+  
+ 3 splits failed to reach 625 for ESS_of_Run_1 
+ 3 splits failed to reach 625 for ESS_of_Run_2 
+ 3 splits failed the split difference test between runs for Between_Run_1_Run_2 
+   
+ BURN-IN SET AT 0 
+  
+ LOWEST SPLIT ESS 
+      RUN 1 -> t_10 t_4 53.01 
+      RUN 2 -> t_10 t_4 53.63 
+  
+ LOWEST CONTINUOUS PARAMETER ESS 
+      RUN 1 -> b 990.8 
+      RUN 2 -> beta 1615.14 
+  
+ To check the calculated parameters for the continuous parameters type: 
+      Means: output$continuous_parameters$means 
+      ESS: output$continuous_parameters$ess 
+      KS score: output$continuous_parameters$compare_runs 
+  
+ To check the calculated parameters for the splits type: 
+      Frequencies of splits: output$tree_parameters$frequencies 
+      ESS: output$tree_parameters$ess 
+      Difference in frequencies: output$tree_parameters$compare_runs 
+  
+ To check the full summary message with splits and parameters excluded from the analysis type: 
+      output$message_complete 

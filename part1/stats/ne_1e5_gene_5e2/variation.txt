@@ -1,0 +1,38 @@
+
+R version 4.2.0 (2022-04-22) -- "Vigorous Calisthenics"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> REP = 50; NUM_GENES = 5e2; SP_DIR = "/home/wzhu/irt/sim/data/sptree/"; GE_DIR = "/home/wzhu/irt/sim/data/getree/ne_1e5_gene_5e2/"; source("/home/wzhu/irt/part1/scripts/dist/gene_trees_RFdistance.R");
+[1] "NUMBER OF GENE TREES THAT ARE DIFFERENT FROM SPECIES TREE WITHIN EACH REPLICATE:"
+ [1]  87  10  27  28  20  28 195  30  17   4  25  68 121  23   1   0 213 161  49
+[20]   0  16   0  31  21  28  15  25  63 260   0   5 186  75   2   2  54   5   3
+[39]   9 213   8   0  10  87 173   0 146  39   6 153
+[1] "AVERAGE NUMBER OF GENE TREES THAT ARE DIFFERENT FROM SPECIES TREE WITHIN EACH REPLICATE:"
+[1] 54.84
+[1] "AVERAGE RF DISTANCE WITHIN EACH REPLICATE:"
+ [1] 0.0248571429 0.0028571429 0.0077142857 0.0080000000 0.0057142857
+ [6] 0.0080000000 0.0560000000 0.0085714286 0.0048571429 0.0011428571
+[11] 0.0071428571 0.0194285714 0.0360000000 0.0065714286 0.0002857143
+[16] 0.0000000000 0.0700000000 0.0460000000 0.0140000000 0.0000000000
+[21] 0.0045714286 0.0000000000 0.0088571429 0.0060000000 0.0080000000
+[26] 0.0042857143 0.0074285714 0.0180000000 0.0742857143 0.0000000000
+[31] 0.0014285714 0.0534285714 0.0214285714 0.0005714286 0.0005714286
+[36] 0.0154285714 0.0014285714 0.0008571429 0.0025714286 0.0608571429
+[41] 0.0022857143 0.0000000000 0.0028571429 0.0257142857 0.0494285714
+[46] 0.0000000000 0.0442857143 0.0111428571 0.0017142857 0.0502857143
+[1] "AVERAGE RF DISTANCE:"
+[1] 0.01609714
+> 

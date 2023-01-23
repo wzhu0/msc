@@ -1,0 +1,41 @@
+[1] "joint_msc_17_run_1.trees"
+[1] "Reading trees..."
+[1] "10 generations per tree..."
+[1] "Unrooting, this may take a while..."
+[1] "Reading parameter values from joint_msc_17_run_1.log"
+[1] "rerooting trees..."
+[1] "Outgroup t_1"
+[1] "joint_msc_17_run_2.trees"
+[1] "Reading trees..."
+[1] "10 generations per tree..."
+[1] "Unrooting, this may take a while..."
+[1] "Reading parameter values from joint_msc_17_run_2.log"
+[1] "rerooting trees..."
+[1] "Outgroup t_1"
+[1] "Calculating burn-in"
+[1] "Analyzing tree parameters"
+[1] "Analyzing continuous parameters"
+ ACHIEVED CONVERGENCE 
+  
+ BURN-IN SET AT 0 
+  
+ LOWEST SPLIT ESS 
+      RUN 1 ->  Inf 
+      RUN 2 ->  Inf 
+  
+ LOWEST CONTINUOUS PARAMETER ESS 
+      RUN 1 -> root_age 1818.86 
+      RUN 2 -> root_age 1746.63 
+  
+ To check the calculated parameters for the continuous parameters type: 
+      Means: output$continuous_parameters$means 
+      ESS: output$continuous_parameters$ess 
+      KS score: output$continuous_parameters$compare_runs 
+  
+ To check the calculated parameters for the splits type: 
+      Frequencies of splits: output$tree_parameters$frequencies 
+      ESS: output$tree_parameters$ess 
+      Difference in frequencies: output$tree_parameters$compare_runs 
+  
+ To check the full summary message with splits and parameters excluded from the analysis type: 
+      output$message_complete 

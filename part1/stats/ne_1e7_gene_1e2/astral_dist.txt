@@ -1,0 +1,32 @@
+
+R version 4.2.0 (2022-04-22) -- "Vigorous Calisthenics"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> REP = 50; SP_DIR = "/home/wzhu/irt/sim/data/sptree/"; AS_DIR = "/home/wzhu/irt/part1/data/sptree/astral/ne_1e7_gene_1e2/"; source("/home/wzhu/irt/part1/scripts/dist/astral_RFdistance.R");
+[1] "RF DISTANCE:"
+ [1] 0.1428571 0.1428571 0.2857143 0.1428571 0.1428571 0.1428571 0.1428571
+ [8] 0.1428571 0.0000000 0.0000000 0.2857143 0.0000000 0.2857143 0.1428571
+[15] 0.0000000 0.1428571 0.4285714 0.1428571 0.1428571 0.0000000 0.0000000
+[22] 0.0000000 0.0000000 0.1428571 0.0000000 0.1428571 0.2857143 0.1428571
+[29] 0.0000000 0.0000000 0.1428571 0.0000000 0.1428571 0.0000000 0.0000000
+[36] 0.2857143 0.0000000 0.2857143 0.0000000 0.1428571 0.2857143 0.0000000
+[43] 0.0000000 0.2857143 0.0000000 0.0000000 0.2857143 0.1428571 0.0000000
+[50] 0.7142857
+[1] "MEAN RF DISTANCE:"
+[1] 0.1257143
+[1] "CORRECT RATE:"
+[1] 0.42
+> 

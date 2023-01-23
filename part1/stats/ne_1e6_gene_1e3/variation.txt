@@ -1,0 +1,37 @@
+
+R version 4.2.0 (2022-04-22) -- "Vigorous Calisthenics"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> REP = 50; NUM_GENES = 1e3; SP_DIR = "/home/wzhu/irt/sim/data/sptree/"; GE_DIR = "/home/wzhu/irt/sim/data/getree/ne_1e6_gene_1e3/"; source("/home/wzhu/irt/part1/scripts/dist/gene_trees_RFdistance.R");
+[1] "NUMBER OF GENE TREES THAT ARE DIFFERENT FROM SPECIES TREE WITHIN EACH REPLICATE:"
+ [1] 882 835 738 802 921 884 899 808 816 906 879 763 954 848 760 482 963 771 670
+[20]  90 719 506 626 658 763 862 919 760 876 422 666 838 779 719 744 795 613 744
+[39] 846 737 814 599 821 946 778 311 971 821 820 995
+[1] "AVERAGE NUMBER OF GENE TREES THAT ARE DIFFERENT FROM SPECIES TREE WITHIN EACH REPLICATE:"
+[1] 762.78
+[1] "AVERAGE RF DISTANCE WITHIN EACH REPLICATE:"
+ [1] 0.23257143 0.21728571 0.15414286 0.17900000 0.32800000 0.24871429
+ [7] 0.25728571 0.18814286 0.21142857 0.29542857 0.23014286 0.16242857
+[13] 0.34857143 0.23614286 0.18371429 0.08771429 0.33428571 0.16071429
+[19] 0.11814286 0.01314286 0.15357143 0.09285714 0.10742857 0.12514286
+[25] 0.18214286 0.24014286 0.31114286 0.17757143 0.23185714 0.07171429
+[31] 0.12771429 0.20114286 0.16671429 0.16400000 0.17200000 0.16914286
+[37] 0.12114286 0.17257143 0.24114286 0.13628571 0.19342857 0.12957143
+[43] 0.22300000 0.33657143 0.16385714 0.05242857 0.43242857 0.21457143
+[49] 0.21428571 0.54028571
+[1] "AVERAGE RF DISTANCE:"
+[1] 0.2010571
+> 

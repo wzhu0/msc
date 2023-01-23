@@ -1,0 +1,31 @@
+
+R version 4.2.0 (2022-04-22) -- "Vigorous Calisthenics"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> REP = 50; SP_DIR = "/home/wzhu/irt/sim/data/sptree/"; MP_DIR = "/home/wzhu/irt/part1/data/sptree/mp/ne_1e5_gene_2e2/"; source("/home/wzhu/irt/part1/scripts/dist/mp_RFdistance.R");
+[1] "two replicates:"
+ [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+[39] 0 0 0 0 0 0 0 0 0 0 0 0
+[1] "rep1 vs true species tree:"
+mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest 
+    0     0     0     0     0     0     0     0     0     0     0     0     0 
+mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest 
+    0     0     0     0     0     0     0     0     0     0     0     0     0 
+mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest 
+    0     0     0     0     0     0     0     0     0     0     0     0     0 
+mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest mpest 
+    0     0     0     0     0     0     0     0     0     0     0 
+> 

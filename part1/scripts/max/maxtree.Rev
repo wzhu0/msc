@@ -1,0 +1,19 @@
+for (REP_INDEX in 1:50){
+
+	# Read in true species tree
+	species_tree = readTrees(TREE_DIR + "sp_" + REP_INDEX + ".tree")[1]
+
+	# Read in true gene trees
+	gene_trees_sim <- readTrees(SIM_DIR + "sim_" + REP_INDEX + ".tree")
+
+	# Choose the first gene tree as starting tree
+	maxtree = maximumTree(gene_trees_sim)
+
+	write(maxtree, filename=OUT_DIR + "max_" + REP_INDEX + ".tree")
+
+	result[REP_INDEX] <- maxtree.hasSameTopology(species_tree)
+}
+
+write(result, filename=OUT_DIR + "compare_max.txt")
+
+q()

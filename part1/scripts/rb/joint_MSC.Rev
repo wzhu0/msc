@@ -1,0 +1,129 @@
+################################################################################
+#
+# RevBayes script for joint approach to estimating the species tree under the
+# multi-species coalescent, assuming the gene trees are fully known (topologies
+# + node ages). There is no meaningful stepwise equivalent to this analysis.
+#
+# author: Allison Hsiang, Wenjie Zhu
+#
+################################################################################
+
+
+# mcmc variables
+# NUM_GEN = 2e4
+PRINT_GEN = 100
+WRITE_GEN = 10
+NUM_RUNS = 2
+BURNIN = NUM_GEN * 0.1
+
+# Read in true species tree
+species_tree = readTrees(TREE_DIR + "sp_" + REP_INDEX + ".tree")[1]
+
+# Read in true gene trees
+gene_trees_sim <- readTrees(SIM_DIR + "sim_" + REP_INDEX + ".tree")
+
+# Get useful information
+NUM_TAXA <-species_tree.ntips()
+num_branches_rooted <- 2 * NUM_TAXA - 2
+nontip_node_index <- NUM_TAXA + 1
+taxa <- species_tree.taxa()
+
+# Choose the first gene tree as starting tree
+start_tree = maximumTree(gene_trees_sim)
+start_tree.rescale(0.99)
+
+# Create vectors to hold moves and monitors
+moves    = VectorMoves()
+monitors = VectorMonitors()
+
+# Set true alpha and beta values
+TRUE_BETA = NE / 1e6
+true_alpha <- 3.0
+true_beta <- TRUE_BETA
+
+
+################
+# Species tree #
+################
+
+# Set up root age parameter
+root_age ~ dnUniform( 0,100 )
+root_age.setValue( start_tree.rootAge() )
+moves.append( mvScale(root_age, tune=true, weight=2.0) )
+moves.append( mvSlide(root_age, tune=true, weight=2.0) )
+
+# Set up species tree prior
+psi ~ dnUniformTimeTree(root_age, taxa)
+psi.setValue( start_tree )
+
+# Set up moves for the species tree
+# Topology moves
+moves.append( mvNarrow(psi, weight=NUM_TAXA) )
+moves.append( mvNNI(psi, weight=NUM_TAXA/2.0) )
+moves.append( mvFNPR(psi, weight=NUM_TAXA/2.0) )
+moves.append( mvGPR(psi, weight=NUM_TAXA/4.0) )
+
+# Node age moves
+moves.append( mvSubtreeScale(psi, weight=num_branches_rooted/5.0) )
+moves.append( mvNodeTimeSlideUniform(psi, weight=num_branches_rooted/2.0) )
+
+
+####################
+# Population sizes #
+####################
+
+# We integrate out the population size parameter using a conjugate inverse gamma prior (see Liu et al. 2008)
+# Set scale parameter for the inverse gamma distribution on effective population sizes
+# Shape parameter alpha is fixed to 3.0
+alpha <- 3.0
+b ~ dnGamma(2,100)
+b.setValue(true_beta/2)
+beta := 2 * b
+
+# Make moves for beta
+moves.append( mvScale(b, tune=true, weight=2.0) )
+moves.append( mvSlide(b, tune=true, weight=2.0) )
+
+
+##############
+# Gene Trees #
+##############
+
+# We are assuming the gene trees are known
+# Get taxon maps
+taxon_map <- readTaxonData(TREE_DIR + "taxon_map.txt")
+for (i in 1:NUM_GENES) {
+    taxon_maps[i] <- taxon_map
+}
+
+# Pull gene tree vector from the MSC prior and clamp to true gene trees
+gene_trees ~ dnMultiSpeciesCoalescentInverseGamma(speciesTree=psi, shape=alpha, rate=beta, num_genes=NUM_GENES, taxa=taxon_maps)
+gene_trees.clamp( gene_trees_sim )
+
+
+############
+# Analysis #
+############
+
+# Set up our model representation
+mymodel = model(psi)
+
+# Add monitors
+monitors.append( mnScreen(beta, printgen=PRINT_GEN) )
+monitors.append( mnFile(psi, filename=OUT_DIR + "/joint_msc_" + REP_INDEX + ".trees", printgen=WRITE_GEN) )
+monitors.append( mnModel(filename=OUT_DIR + "/joint_msc_" + REP_INDEX + ".log", printgen=WRITE_GEN) )
+
+# Run the analysis
+mymcmc = mcmc(mymodel, moves, monitors, nruns=NUM_RUNS, combine="mixed")
+mymcmc.burnin(BURNIN,100)
+mymcmc.run(NUM_GEN)
+mymcmc.operatorSummary()
+
+# Summarize output
+treetrace = readTreeTrace(OUT_DIR + "/joint_msc_" + REP_INDEX + ".trees", treetype="clock")
+
+# Get the MAP tree
+map_tree = mapTree(treetrace, OUT_DIR + "/rev_MAP_" + REP_INDEX + ".tree")
+
+# Quit RevBayes
+q()

@@ -1,0 +1,16 @@
+for (REP_INDEX in 1:50) {
+    treetrace_1 = readTreeTrace("/joint_msc_" + REP_INDEX + "_run_1.trees", treetype="clock")
+
+    treetrace_2 = readTreeTrace("/joint_msc_" + REP_INDEX + "_run_2.trees", treetype="clock")
+
+    map_tree_1 = mapTree(treetrace_1, "/run_1_rev_MAP_" + REP_INDEX + ".tree")
+
+    map_tree_2 = mapTree(treetrace_2, "/run_2_rev_MAP_" + REP_INDEX + ".tree")
+
+    result[REP_INDEX] <- map_tree_1.hasSameTopology(map_tree_2)
+}
+
+write(result, filename="compare_runs.txt")
+
+q()
+
