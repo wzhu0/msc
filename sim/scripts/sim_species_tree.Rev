@@ -1,0 +1,15 @@
+# We are going to save the trees we simulate in the folder:
+OUT_DIR = "/home/wzhu/irt/sim/data/sptree/"
+# Let’s simulate 50 species trees with 10 taxa
+n_species <- 10
+rep <- 50
+
+# we simulate an ultrametric species tree:
+for (j in 1:rep) {
+    for (i in 1:n_species) {
+        species[i] <- taxon(taxonName="t_"+i, speciesName="t_"+i)
+    }
+    spTree ~ dnBirthDeath(lambda=0.3, mu=0.2, rootAge=10, rho=1, samplingStrategy="uniform", condition="nTaxa", taxa=species)
+    write(spTree, filename=OUT_DIR+"sp_" + j + ".tree")
+}
+

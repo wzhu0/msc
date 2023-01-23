@@ -1,0 +1,11 @@
+Taxon	Species	
+t_8	t_8
+t_5	t_5
+t_6	t_6
+t_2	t_2
+t_4	t_4
+t_9	t_9
+t_7	t_7
+t_1	t_1
+t_3	t_3
+t_10	t_10

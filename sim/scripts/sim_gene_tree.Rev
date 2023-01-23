@@ -1,0 +1,33 @@
+## Gene trees simulation with revbayes
+
+setOption("printNodeIndex","false")
+
+# rescale factor
+TIME_UNIT = 1e6
+
+# Simulate gene trees
+for (k in 1:REP) {
+
+    # Read in species tree
+    species_tree = readTrees(SPECIES_DIR + "sp_" + k +".tree")[1]
+    # rescale time to years
+    species_tree.rescale(TIME_UNIT)
+    NUM_TAXA = species_tree.ntips()
+    SP_TAXA = species_tree.taxa()
+
+    for (i in 1:NUM_GENES) {
+        "Simulating gene " + i + "..."
+
+        for (j in 1:NUM_TAXA) {
+            taxa[i][j] = SP_TAXA[j]
+        }
+        gene_trees_sim[i] ~ dnMultiSpeciesCoalescent(speciesTree=species_tree, Ne=NE, taxa=taxa[i])
+        # rescale time to mya
+        gene_trees_sim[i].rescale(1 / TIME_UNIT) 
+        # Write simulated gene trees to file
+        write(gene_trees_sim[i], "\n", filename=SIM_DIR + "/sim_" + k + ".tree", append=TRUE, separator="")       
+    }
+}
+
+q()
+

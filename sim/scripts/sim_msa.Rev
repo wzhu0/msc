@@ -1,0 +1,32 @@
+NUM_REP = 50
+NUM_SITES = 1E3
+
+
+#####################
+# Branch-Rate Model #
+#####################
+
+# We use fixed branch rates
+branch_rates <- 2.8E-9 * 1E6
+
+######################
+# Simulate sequences #
+######################
+
+# Each gene has its own substitution model
+for (REP_INDEX in 1:NUM_REP) {
+    MSA_DIR = OUT_DIR + "rep" + REP_INDEX
+    gene_trees_sim <- readTrees(GETREE_DIR + "sim_" + REP_INDEX + ".tree")
+    for (i in 1:NUM_GENES) {
+   	 Q <- fnJC(4)
+
+    	# Simulate DNA sequence
+   	 seq[i] ~ dnPhyloCTMC( tree=gene_trees_sim[i], Q=Q, branchRates=branch_rates, type="DNA", nSites=NUM_SITES )
+
+    	# Write sequence to file
+	 writeNexus(seq[i], file=MSA_DIR + "/gene_" + i + ".nex")
+    }
+}
+
+# Quit RevBayes
+q()
